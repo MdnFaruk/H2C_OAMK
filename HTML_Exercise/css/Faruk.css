@@ -1,0 +1,81 @@
+body {
+    background-color: #D3D3D3;
+
+}
+
+main {
+    background-color: snow;
+    max-width: 960px;
+    margin: auto;
+    padding: 10px 20px 20px;  /*padding top=10,right=20,bottom=20,left=20*/
+    font-family: sans-serif;
+    border-radius: 10px;
+}
+
+h1,h2,h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    color:#340933;
+}
+h2 {
+    color:#3A0339;
+}
+h3 {
+    color:#9A0794;
+}
+table{
+    border: 3px double #3A0339;   /*border width,style,color*/
+    border-collapse: collapse;      /*we can use any of border collapse. Border collapse make 2 borders 1*/
+    border-collapse: separate;
+}
+th,td{
+    border:1px dotted #9A0794;
+    padding:10px;
+    text-align: left;
+    vertical-align: top;
+}
+th{
+    background-color: #FDDDFC;
+    color:#340933;
+    
+
+}
+img{
+    max-width: 100%;
+}
+figure{
+    margin-left: 0px;
+}
+.headingStyle{
+    font-family: Georgia;
+    font-style: italic;
+    color: #9A0794;
+}
+.pragrphStyle1{
+    margin: 0px 100px;
+    padding: 20px;
+    border-radius: 5px;
+}
+.pragrphColor1{
+    background-color: #FDDDFC ;
+}
+.pragrphColor2{
+    background-color: #D3D3D3 ;
+}
+address {
+    text-align: right;
+}
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3A0339 ;
+}
+a:visited {
+    color: #3A0339;
+}
+a:hover {
+    color: #9A0794;
+    text-decoration: underline;
+}
