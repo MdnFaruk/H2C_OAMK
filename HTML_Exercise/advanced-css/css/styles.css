@@ -1,0 +1,108 @@
+/* 
+    Author     : Faruk
+*/
+div {
+    font-family: tahoma;
+    margin-left: 4em;
+    max-width: 1000px;
+    background-color: #FFF9DC;
+}
+
+section {
+    padding: 2em;
+}
+
+h1, h2 {
+    color: #370F57;
+}
+th,td {
+    padding: 0.5em;
+    text-align: center;
+}
+[colspan="13"] {            /*Specific attribute define, such as, [attribute="value"]{....}*/
+    background-color: #370F57;
+    color:white;
+    text-align: left;
+}
+[colspan="2"] {
+    text-align: left;
+}
+td:nth-child(2) {
+    text-align: left;
+}
+th {
+    background-color: #951ef1;
+    color: white;
+    width: 2em;
+}
+tr:nth-child(even) {
+    background: #EFDDFD;
+}
+tr:nth-child(odd) {
+    background: #C27EF7;
+}
+img{
+    max-width: 100%; 
+    border: 5px solid #370F57;  /*Car image border*/
+}
+.nature {
+    padding: 0px;
+    margin: 0px;
+}
+.nature li {
+    display: inline-block;
+    vertical-align: top;
+    width: 12em;
+    margin: 0em 2em 2em 0em;
+    position: relative;
+    vertical-align: top;
+}
+.nature li img {
+    border: 5px solid #C27EF7;
+}
+.nature li img[alt~="kukka"] {
+    border: 5px solid green;
+}
+figure {
+    display: inline-block;
+    width: 40%;
+    margin-left: 0px;
+    margin-right: 2em;
+    position: relative;
+    vertical-align: top;
+}
+.life li {
+    display: inline;
+}
+.life li:nth-child(odd) {
+    background: #C27EF7;
+    padding: 5px;
+}
+.life li:nth-child(even) {
+    color: #370F57;
+    font-weight: bold;
+    font-size: large;
+}
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: .5s ease;
+    opacity: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    margin: 0px 0px 5px 5px;
+    padding: 10px 0px ;     /*top & bottom 10px*/
+}
+figure:hover .overlay,
+.nature:hover .overlay {
+    opacity: 1;
+}
+section:nth-child(even) {
+    background-color: #FDDC22;
+}
+section:nth-child(odd) {
+    background-color: #FEEC86;
+}
+
