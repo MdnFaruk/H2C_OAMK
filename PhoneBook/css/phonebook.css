@@ -1,0 +1,75 @@
+body {
+    background-color: #D3D3D3;
+}
+
+
+main {
+    
+    font-family:tahoma;
+    font-size:large;
+    background-color:rgb(15, 15, 15);
+    margin: auto;
+    padding: 10px 20px 20px;
+    max-width: 65em;
+    color: turquoise;
+}
+
+section {
+    display: inline-block;
+    width: 20em;
+    vertical-align: top;
+    margin-right: 1em;
+    border-top: rgb(0, 255, 106) 2px dashed;
+    
+}
+h2 {
+    color: rgb(126, 103, 231);
+}
+div {
+    margin-bottom: 1em;
+}
+
+button {
+    display: block; 
+    margin-bottom: 0.8em;
+    margin-top: 0.8em;
+    font-family: tahoma;
+    font-size: 0.8em;
+    width:8em;
+    padding:10px 25px;
+    color: white;
+    background-color: #f44336;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+label {
+    margin-top: 0.5em; 
+    width: 6em;
+    display: inline-block; 
+}
+
+label.output {
+    display: block;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: yellowgreen 1px dashed;
+}
+
+input {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #f44336;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #3CBC8D;
+    color: white;
+    font-weight: bold;
+}
+#birthyear {
+    width: 30%;
+}
+
