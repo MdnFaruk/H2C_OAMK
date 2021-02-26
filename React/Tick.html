@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Tick</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function tick() {
+            const element = (
+                <h3>{new Date().toLocaleTimeString()}</h3>
+            );
+            ReactDOM.render(element,document.getElementById('root'));
+        }
+        setInterval(tick,1000);
+    </script>
+
+</body>
+
+</html>
