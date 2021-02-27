@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Extracting Component with Post</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const post = {
+            title: 'Test post',
+            text: 'This is really nice post...',
+            author: {
+                fname: 'Md',
+                lname: 'Faruk',
+                date: '27.02.2020'
+            },
+            comments: {
+                comment: {
+                    by: 'Test user',
+                    text: 'Good job!',
+                    date: '28.02.2020'
+                }
+            }
+        };
+        
+        function Post(props) {
+            return (
+                <div>
+                    <h1>{props.post.title}</h1>
+                    <p>{props.post.text}</p>
+                    <Author  author={props.post.author}/>
+                    <Comment comment={props.post.comments.comment} />
+                </div>
+            );
+        }
+
+        function Author(props) {
+            return (
+                <p>
+                    {props.author.date} by {props.author.lname}
+                </p>
+            );
+        }
+
+        function Comment(props) {
+            return (
+                <div>
+                    <h2>Comments</h2>
+                    <p>{props.comment.text}</p>
+                    <p>{props.comment.date} by {props.comment.by}</p>
+                    
+                </div>
+            );
+        }
+
+        
+
+        ReactDOM.render(<Post post={post} />,document.getElementById('root'));
+
+    </script>
+
+</body>
+
+</html>
