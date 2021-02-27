@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Full Name</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const person = {
+            fname: 'Md',
+            lname: 'Faruk',
+            address: {
+                street: 'Tommilantie 1',
+                zip: '28610',
+                city: 'Pori'
+            }
+        };
+        
+        function Person(props) {
+            return (
+                <div>
+                    <h1>Hello!</h1>
+                    <h3>Your name and contact details are</h3>
+                    <p>{props.person.fname} {props.person.lname}</p>
+                    <Address address={props.person.address} />
+                </div>
+            );
+        }
+
+        function Address(props) {
+            return (
+                <p>
+                    {props.address.street} <br/>
+                    {props.address.zip} {props.address.city}
+                </p>
+            );
+        }
+
+        ReactDOM.render(<Person person={person} />,document.getElementById('root'));
+
+    </script>
+
+</body>
+
+</html>
