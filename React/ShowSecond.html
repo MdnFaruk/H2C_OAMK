@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Second</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Seconds extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {second: 0};
+            }
+
+            componentDidMount() {
+                this.timerID = setInterval(() => this.tick(), 1000);
+            }
+
+            componentWillUnMount() {
+                clearInterval(this.timerID);
+            }
+
+            tick() {
+                this.setState((pervState, props) => ({
+                    second: pervState.second + parseInt(props.increment)
+                }));
+            }
+
+            render() {
+                return (
+                    <div>
+                        <p>{this.state.second}</p>    
+                    </div>
+                );
+            }
+        }
+        ReactDOM.render(<Seconds increment="1" />,document.getElementById('root'));
+    </script>
+
+</body>
+
+</html>
