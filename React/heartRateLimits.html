@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Heart Rate Limits</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        div {
+            margin: 20px 20px 20px 0px;
+            text-align: left;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Calories extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    age: 40,
+                    result: 0
+                }
+            }
+
+            handleChange = (event) => {
+                this.setState({ [event.target.name]: event.target.value });
+            }
+
+            handleSubmit = (event) => {
+                event.preventDefault();
+                const { age, result } = this.state;
+
+                let upperLimt = 0;
+                let lowerLimit = 0;
+                upperLimt = (220 - age) * 0.85;
+                lowerLimit = (220 -age) * 0.65; 
+
+                this.setState({result: lowerLimit.toFixed(1)+"-"+ upperLimt.toFixed(1)});
+
+            }
+
+
+            render() {
+                const { age, result } = this.state;    //destructuring
+                return (
+                    <div >
+                        <h3>Calculating Heart Rate Limit</h3>
+                        <form onSubmit={this.handleSubmit}>
+                            <div>
+                                <label>Age</label>
+                                <input name="age" type="number" step="1"
+                                    value={age} onChange={this.handleChange} />
+
+                            </div>
+
+                            <div>
+                                <output>{result}</output>
+                            </div>
+                            <button >Calculate</button>
+
+                        </form>
+                    </div>
+                )
+            }
+
+        }
+        ReactDOM.render(
+            <Calories />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+
+</html>

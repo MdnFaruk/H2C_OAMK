@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>List</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class List extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {itemList: []};
+            }
+
+            componentDidMount() {
+                const item = [];
+
+                item.push("car");
+                item.push("van");
+                item.push("plane");
+                item.push("truck");
+
+
+                this.setState({itemList: item});
+            }
+
+            render() {
+                const {itemList} = this.state;    //destructuring
+                return (
+                    <ul>
+                    {itemList.map(element => (
+                        <li key={Math.random()}>{element}</li>
+                    ))}
+                    </ul>
+                )
+            }
+
+        }
+        ReactDOM.render(
+            <List />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+
+</html>

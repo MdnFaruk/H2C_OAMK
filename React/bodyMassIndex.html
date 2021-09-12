@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Body Mass Index</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        div {
+            margin: 20px 20px 20px 0px;
+            text-align: left;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Calories extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    weight: 90 ,
+                    height: 1.63,
+                    result: 0
+                }
+            }
+
+            handleChange = (event) => {
+                this.setState({ [event.target.name]: event.target.value });
+            }
+
+            handleSubmit = (event) => {
+                event.preventDefault();
+                const { weight, height, result } = this.state;
+
+                let BMI = 0;
+                BMI = weight / Math.pow(height,2);
+
+                this.setState({ result: BMI });
+
+            }
+
+
+            render() {
+                const { weight, height, result } = this.state;    //destructuring
+                return (
+                    <div >
+                        <h3>Calculating Body Mass Index</h3>
+                        <form onSubmit={this.handleSubmit}>
+                            <div>
+                                <label>Height</label>
+                                <input name="height" type="number" step="1"
+                                    value={height} onChange={this.handleChange} />
+                                <label>weight</label>
+                                <input name="weight" type="number" step="1"
+                                    value={weight} onChange={this.handleChange} />
+                            </div>
+
+                            <div>
+                                <output>{result.toFixed(0)}</output>
+                            </div>
+                            <button >Calculate</button>
+
+                        </form>
+                    </div>
+                )
+            }
+
+        }
+        ReactDOM.render(
+            <Calories />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+
+</html>

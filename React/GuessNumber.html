@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Guess Number</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Guess extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    number: 0,
+                    answer:""
+                };
+
+            }
+
+            componentDidMount(){
+                const randomNmbr = Math.floor(Math.random() * 6) + 1;
+                this.setState({number: randomNmbr});
+               
+            }
+
+            handleChange = (event) => {
+                this.setState({answer: event.target.value});
+            }
+
+            handleSubmit = (event) => {
+                
+                const {number, answer} = this.state;
+                
+                if (number === answer) {
+                    alert("Correct");
+                } else {
+                    alert("Answer is wrong " + number);
+                }
+
+                const randomNmbr = Math.floor(Math.random() * 6) + 1;
+                this.setState({
+                    answer: "",
+                    number: randomNmbr
+                });
+
+                event.preventDefault();
+            }
+
+            render() {
+                const {number, answer} = this.state;    //destructuring
+                return (
+                    <div >
+                        <form onSubmit={this.handleSubmit}>
+                            <h3>I am randomizing number between 1 to 6. Guess it</h3>
+                            <input type="number" value={answer} onChange={this.handleChange} />
+                            <button >guess</button>
+                            
+                        </form>
+                    </div>
+                )
+            }
+
+        }
+        ReactDOM.render(
+            <Guess />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+
+</html>

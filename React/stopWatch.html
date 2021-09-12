@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Stop watch</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        let timerID = 0;
+
+        class Toggle extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {isToggleOn: true};
+                this.handleClick = this.handleClick.bind(this);
+            }
+
+            handleClick() {
+                this.setState(state =>({        // Here "state" argument ar jaigai j kono argument can be used
+                    isToggleOn: !state.isToggleOn   // then ai "state" argument change korta hba
+                }));
+                
+                if (this.state.isToggleOn) {
+                    this.props.stop();
+                } else {
+                    this.props.start();
+                }
+            }
+
+            render() {
+                const {isToggleOn} = this.state;    //destructuring
+                return (
+                    <button onClick={this.handleClick}>
+                        {isToggleOn ? 'Stop' : 'Start'}
+                    </button>
+                )
+            }
+
+        }
+
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {seconds: 0};
+            }
+
+            componentDidMount() {
+                this.start();
+            }
+
+            componentWillUnMount() {
+                this.stop();
+            }
+
+            start = () => {
+                this.timerID = setInterval(() => this.tick(), 1000);
+                this.setState({
+                    seconds: 0
+                });
+            }
+
+            stop = () => {
+                clearInterval(this.timerID);
+            }
+
+            tick() {
+                this.setState((state) => ({
+                    seconds: state.seconds + 1
+                }));
+            }
+
+            render() {
+                return (
+                    <div>
+                        <Toggle start={this.start} stop={this.stop}/>
+                        <p>{this.state.seconds}</p>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Clock />,document.getElementById('root'));
+    </script>
+
+</body>
+
+</html>

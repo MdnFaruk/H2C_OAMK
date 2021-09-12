@@ -1,0 +1,14 @@
+.myDIV {
+    
+    background: red;
+    font-weight: bold;
+    animation: mymove 3s ;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes mymove {
+    from {background-color: red;
+    font-weight: 100;}
+    to {background-color: blue;
+    font-weight:900;}
+  }

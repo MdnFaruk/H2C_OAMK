@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Calories</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        div { margin: 20px 20px 20px 0px; text-align: left;}
+
+    </style>
+
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Calories extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    weight: 90,
+                    intensity: 1.7,
+                    gender: 'male',
+                    result: 0
+                }
+            }
+
+            handleChange = (event) => {
+                this.setState({[event.target.name]:event.target.value});
+            }
+
+            handleSubmit = (event) => {
+                event.preventDefault();
+                const { weight, intensity, gender, result} = this.state;
+
+                let calories = 0;
+                if (gender === 'male') {
+                    calories = (879 + 10.2 * weight) * intensity;
+                } else {
+                    calories = (795 + 7.18 * weight) * intensity;
+                }
+
+                this.setState({ result: calories});
+
+            }
+
+
+            render() {
+                const { weight, intensity, gender, result } = this.state;    //destructuring
+                return (
+                    <div >
+                        <h3>Calories</h3>
+                        <form onSubmit={this.handleSubmit}>
+                            <div>
+                                <label>Weight</label>
+                                <input name="weight" type="number" step="1"
+                                    value={weight} onChange={this.handleChange} />
+                            </div>
+                            <div>
+                                <label> Intensity</label>
+                                <select name="intensity" value={intensity} onChange={this.handleChange} >
+                                    <option value="1.3">Light</option>
+                                    <option value="1.5">Usual</option>
+                                    <option value="1.7">Moderate</option>
+                                    <option value="2">Hard</option>
+                                    <option value="2.2">Very hard</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Gender</label>
+                                <input type="radio" name="gender" value="male" defaultChecked onChange={this.handleChange} />
+                                <label>Male</label>
+                                <input type="radio" name="gender" value="male" onChange={this.handleChange} />
+                                <label>Female</label>
+                            </div>
+                            <div>
+                                <output>{result.toFixed(0)}</output>
+                            </div>
+                            <button >Calculate</button>
+
+                        </form>
+                    </div>
+                )
+            }
+
+        }
+        ReactDOM.render(
+            <Calories />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+
+</html>

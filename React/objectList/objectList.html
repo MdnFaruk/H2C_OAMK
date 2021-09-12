@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>List of Object</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="./item.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class List extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { itemList: [] };
+            }
+
+            componentDidMount() {
+                const item = [];
+
+                item.push(new Item("car", 1));
+                item.push(new Item("van", 4));
+                item.push(new Item("plane", 6));
+
+                this.setState({ itemList: item });
+            }
+
+            render() {
+                const { itemList } = this.state;    //destructuring
+                return (
+                    <>
+                        <h3>Vehicle List</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {itemList.map(element => (
+                                    <tr key={element.name}>
+                                        <td>{element.name}</td>
+                                        <td>{element.amount}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </>
+                );
+            }
+
+        }
+        ReactDOM.render(
+            <List />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+
+body, html {
+  height: 100% ;    /* this is a must for parallax. */ 
+  font-size: 100% ;
+  background-color: #e7f3ef;
+}
+
+.parallax {
+  position:relative ;
+  opacity: 0.8 ;
+    
+  
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed ;
+  background-position: center ;
+  background-repeat: no-repeat ;
+  background-size: cover ;
+}
+
+#bgimg-1, #bgimg-4 {
+  background-image: url("../img/winter1.jpg");
+  height: 80%;
+  
+}
+
+#bgimg-2 {
+  background-image: url("../img/winter2.jpg");
+  height: 80%;
+}
+
+#bgimg-3 {
+  background-image: url("../img/winter3.jpg");
+  height: 60%;
+}
+
+.caption {
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  width: 100%;
+  text-align: center;  
+}
+
+.caption span.border {
+  background-color: transparent;
+  padding: 18px;
+  font-size: 1.5em;
+  font-weight: bold;
+  letter-spacing: 5px;
+  line-height: 2em;
+}
+
+.text {
+    padding: 30px 100px 30px 100px;
+    position: relative;
+} 
+
+.text h3 {
+    text-align: center;
+}
+
+/* Turn off parallax scrolling for all tablets and phones. 
+Increase/decrease the pixels if needed. Test what is the proper value 
+for your larger screens and smaller screens. */
+@media screen and (max-width: 640px) {
+    .parallax {
+        background-attachment: scroll;
+    }
+    
+    .text {
+        padding: 30px 10px 30px 10px;
+        position: relative;
+    }     
+}
+

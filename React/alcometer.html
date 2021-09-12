@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Extracting Component</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        div { margin: 20px 20px 20px 0px; text-align: left;}
+        input, select { margin-left:10px;}
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class AlcoMeter extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    weight: 89,
+                    time: 1,
+                    bottles: 3,
+                    gender: 'male',
+                    result: 0
+                }
+            }
+
+            handleChange = (event) => {
+                this.setState({ [event.target.name]: event.target.value });
+            }
+
+            handleSubmit = (event) => {
+                event.preventDefault();
+                const { weight, time, bottles, gender, result } = this.state;
+
+                let alcoLevel = 0;
+                let litres = bottles * 0.33;
+                let grams = litres * 8 * 4.5;
+                let burning = weight / 10;
+                grams = grams - (burning * time);
+
+                if (gender === 'male') {
+                    alcoLevel = grams / (weight * 0.7);
+                } else {
+                    alcoLevel = grams / (weight * 0.6);
+                }
+
+                this.setState({ result: alcoLevel });
+
+            }
+
+            slectOptionsForTime() {
+                const times = [];
+                for (let i = 1; i <= 24; i++) {
+                    times.push(<option key={i} value={i}>{i} hour</option>);
+                }
+                return times;
+            }
+           
+
+            slectOptionsForBottles() {
+                const bottles = [];
+                for (let i = 1; i <= 50; i++) {
+                    bottles.push(<option key={i} value={i}>{i}</option>);
+                }
+                return bottles;
+            } 
+
+            render() {
+                const { weight, time, bottles, gender, result } = this.state;    //destructuring
+                return (
+                    <div >
+                        <h3>Alcometer</h3>
+                        <form onSubmit={this.handleSubmit}>
+                            <div>
+                                <label>Weight</label>
+                                <input name="weight" type="number" step="0.25"
+                                    value={weight} onChange={this.handleChange} />
+                            </div>
+                            <div>
+                                <label> Time &nbsp;&nbsp;</label>
+                                <select name="time" value={time} onChange={this.handleChange} >
+                                    {this.slectOptionsForTime()}
+                                </select>
+                            </div>
+                            <div>
+                                <label> Bottles</label>
+                                <select name="bottles" value={bottles} onChange={this.handleChange} >
+                                    {this.slectOptionsForBottles()}
+                                </select>
+                            </div>
+                            <div>
+                                <label>Gender</label>
+                                <input type="radio" name="gender" value="male" defaultChecked onChange={this.handleChange} />
+                                <label>Male</label>
+                                <input type="radio" name="gender" value="male" onChange={this.handleChange} />
+                                <label>Female</label>
+                            </div>
+                            <div>
+                                <output>{result.toFixed(2)}</output>
+                            </div>
+                            <button >Calculate</button>
+
+                        </form>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<AlcoMeter />, document.getElementById('root'));
+
+    </script>
+
+</body>
+
+</html>

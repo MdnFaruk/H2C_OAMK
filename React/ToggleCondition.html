@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Conditional Toggle</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class Toggle extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {isToggleOn: true};
+                this.handleClick = this.handleClick.bind(this);
+            }
+
+            handleClick() {
+                this.setState(state =>({        // Here "state" argument ar jaigai j kono argument can be used
+                    isToggleOn: !state.isToggleOn   // then ai "state" argument change korta hba
+                }));
+            }
+
+            render() {
+                const isToggleOn = this.state.isToggleOn;    //destructuring
+                /*  let message;
+                if (isToggleOn) {
+                    message = 
+                        <div>
+                            <p>Press button to toggle off</p>
+                            <button onClick={this.handleClick}>    //conditional rendering normal way
+                                {isToggleOn ? 'Off' : 'On'}
+                            </button>
+                        </div>
+                } else {
+                    message = 
+                        <div>
+                            <p>Press button to toggle on</p>
+                            <button onClick={this.handleClick}>
+                                {isToggleOn ? 'Off' : 'On'}
+                            </button>
+                        </div>
+                }  */
+                
+                return (
+                    /* <>
+                    {message}           //conditional rendering normal way
+                    </> */
+
+                    /* ......conditional rendering ternery way...... */
+
+                    <div>  //conditional rendering
+                        <button onClick={this.handleClick}>
+                                {isToggleOn ? 'Off' : 'On'}
+                            </button>
+                        {isToggleOn ? <p>Press button to toggle off</p> : <p>Press button to toggle on</p>}
+                    </div>
+                )
+            }
+
+        }
+        ReactDOM.render(
+            <Toggle />,
+            document.getElementById('root')
+        );
+
+    </script>
+
+</body>
+
+</html>

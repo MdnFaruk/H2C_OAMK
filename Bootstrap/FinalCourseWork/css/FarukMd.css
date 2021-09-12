@@ -1,0 +1,82 @@
+/* 
+    Author     : Md Faruk
+*/
+@import url('https://fonts.googleapis.com/css2?family=Yrsa:wght@700&display=swap');
+
+main {
+  background-color: #e7f3ef;
+}
+
+header {
+  background-color: #448d76;
+  padding-top: 10px;
+  color: #e7f3ef;
+}
+
+footer {
+  background-color: #093426;
+  color: #e7f3ef;
+}
+
+h1 {
+  font-family: 'Yrsa', serif;
+}
+h2 {
+  color: #093426;
+}
+
+.img-thumbnail {
+  background-color: #79bea8 !important;
+  border: #23483c !important;
+}
+nav .container-fluid {
+  padding-left: 0px;
+}
+
+.nav-link {
+  color: #e7f3ef !important;
+  font-size: 18px !important;
+  margin-right: 20px !important;
+}
+.nav-link:hover {
+  color:#093426 !important;
+}
+
+.active {
+  color:black !important;
+  font-weight: bold !important;
+}
+
+.navbar-toggler {
+  border-color: #e7f3ef !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(235,247,227,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.not_apperd {
+  display: none;
+}
+
+.selected {
+  background-color: #90ee90;
+  color: #093426;
+}
+
+.wrong {
+  background-color: #ffa07a;
+}
+
+.right {
+  font-weight: bold;
+  color: rgb(138, 43, 226);
+}
+
+a[data-bs-toggle="popover"]:focus {
+    outline: none;
+}
+
+figcaption {
+  font-weight: bold;
+}
